@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ad3af365b45865c3741085a6a39e8f9d88b2ff9cfec94e0dfd355fa985260eea"
+            "sha256": "c8ced465830dda3afb17396e992dd003f7b56c269073068ad7e126a4a014cdef"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,13 @@
             ],
             "index": "pypi",
             "version": "==2.2.6"
+        },
+        "django-iban-field": {
+            "hashes": [
+                "sha256:9d11eacb49b939702aa169aa0a3c9880970ed087c236279c32c26f86c7e10092"
+            ],
+            "index": "pypi",
+            "version": "==0.8"
         },
         "gunicorn": {
             "hashes": [

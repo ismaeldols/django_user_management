@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 psycopg2-binary = "==2.8.3"
 gunicorn = "==19.9.0"
+django-iban-field = "==0.8"
 
 [requires]
 python_version = "3.7"
