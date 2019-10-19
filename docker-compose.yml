@@ -1,0 +1,44 @@
+version: '3.3'
+
+services:
+
+  db:
+    image: postgres:12.0
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      LANG: en_US.utf8
+      POSTGRES_USER: administrator
+      POSTGRES_PASSWORD: Admin1234
+      POSTGRES_DB: Django
+
+  web:
+    build: .
+    command: python /code/manage.py migrate --noinput
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 80:8000
+      - 55362:55362
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=${SECRET_KEY:-foo}
+      - PORT=8000
+      - DJANGO_SETTINGS_MODULE=django_user_management.settings
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=Django
+      - SQL_USER=administrator
+      - SQL_PASSWORD=Admin1234
+      - SQL_HOST=db
+      - SQL_PORT=5432
+      - DATABASE=postgres
+    depends_on:
+      - db
+
+
+volumes:
+  postgres_data:
