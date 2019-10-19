@@ -14,7 +14,7 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Remote Python 3.7.4 Docker Compose (web at [/home/ismael/PycharmProjects/django_user_management/docker-compose.yml])" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Pipenv (django_user_management)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
