@@ -17,13 +17,12 @@ services:
 
   web:
     build: .
-    command: python /code/manage.py migrate --noinput
     command: python /code/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - 80:8000
-      - 55362:55362
+      - 55430:55430
     environment:
       - DEBUG=1
       - SECRET_KEY=${SECRET_KEY:-foo}
