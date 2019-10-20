@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'social_django',
     'rest_framework_social_oauth2',
     'django_createsuperuserwithpassword',
+    'admin_sso',
     'django_user_management.apps.user_management'
 ]
 
@@ -104,6 +105,7 @@ DATABASES = {
 AUTH_USER_MODEL = "user_management.CustomUser"
 
 AUTHENTICATION_BACKENDS = {
+    'admin_sso.auth.DjangoSSOAuthBackend',
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
     'rest_framework_social_oauth2.backends.DjangoOAuth2'
@@ -113,6 +115,8 @@ DEFAULT_AUTHENTICATION_CLASSES = [
     'rest_framework.authentication.BasicAuthentication'
 ]
 
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = '349187247768-72louk2gf4jvqq80utc07gta2ddfvp2q.apps.googleusercontent.com'
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = 'dSkizdwQSwzsX3hvhI1wRxl3'
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
