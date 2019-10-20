@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework_social_oauth2',
     'django_createsuperuserwithpassword',
     'admin_sso',
+    'corsheaders',
     'django_user_management.apps.user_management'
 ]
 
@@ -204,6 +205,9 @@ REST_FRAMEWORK = {
 
 }
 
+# CORS Settings
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Custom test runner for PostgreSQL database
 

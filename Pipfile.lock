@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "141477d62dfa6acacdc60e7d7b186d3c424d449dd689aa3a2fa6576af2bbf142"
+            "sha256": "ac7312990a7dd5c4ba7ce64c62996f14c03e77813cc8b5c686a52b723490d020"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -60,6 +60,14 @@
                 "sha256:ba68e98b817c6f01d71d10849f359979617b3fe4cefb7f289adefddced092ddc"
             ],
             "version": "==1.13.0"
+        },
+        "django-cors-headers": {
+            "hashes": [
+                "sha256:5762ec9c2d59f38c76828dc1d4308baca4bc0d3e1d6f217683e7a24a1c4611a3",
+                "sha256:ee02f4b699e9b6645602a46d0adb430ee940a1bf8df64f77e516f8d7711fee60"
+            ],
+            "index": "pypi",
+            "version": "==3.1.1"
         },
         "django-createsuperuserwithpassword": {
             "hashes": [
