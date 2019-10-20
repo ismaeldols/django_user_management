@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='customuser',
             name='iban',
-            field=django_iban.fields.IBANField(default='', enforce_database_constraint=True, max_length=34, unique=True),
+            field=django_iban.fields.IBANField(default='ES00 0000 0000 0000 0000 0000', enforce_database_constraint=True, max_length=34, unique=True),
             preserve_default=False,
         ),
     ]

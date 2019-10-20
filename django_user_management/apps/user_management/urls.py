@@ -13,6 +13,7 @@ endpoint_urlpatterns = [
 
 api_urlpatterns = [
     path('rest/', include(endpoint_urlpatterns)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
 urlpatterns = [

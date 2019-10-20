@@ -16,4 +16,7 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic --no-input --clear
 
+python manage.py createsuperuserwithpassword --username test --iban IL952197497867939996202 --first_name test --last_name test --email test@test.com --password test --preserve
+# Add assignment for user@gmail.com >  match username=user domain=gmail.com, weight=100, user=test  ## TODO: ADD MANAGE.PY COMMAND TO ADD IT
+
 exec "$@"
