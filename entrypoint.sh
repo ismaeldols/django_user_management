@@ -12,8 +12,7 @@ then
 fi
 
 python manage.py flush --no-input
-python manage.py makemigrations
-python manage.py migrate
+python manage.py migrate --noinput
 python manage.py collectstatic --no-input --clear
 
 python manage.py createsuperuserwithpassword --username test --iban IL952197497867939996202 --first_name test --last_name test --email test@test.com --password test --preserve
