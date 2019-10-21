@@ -1,7 +1,10 @@
 # Django User Management
 
 Start development environment:
->docker-compose up --build
+$ docker-compose up --build
+
+Run unit tests: (need development environment running)
+$ docker-compose exec web python manage.py test
 
 First go to http://localhost/admin and access with default credentials:
 * User: test
@@ -19,7 +22,7 @@ http://localhost/auth/login/google-oauth2
 
 And manage user with CRUD operations over the navigable REST-API:
 
-LIST and POST: http://localhost/v1/rest/users
-RETRIEVE, PUT and DELETE: http://localhost/v1/rest/users/<user_id>
+LIST and POST: http://localhost/manage/v1/rest/users
+RETRIEVE, PUT and DELETE: http://localhost/manage/v1/rest/users/<user_id>
 
-* You can only PUT or DELETE users created by you.
+* You can only PUT or DELETE users created by your admin user.

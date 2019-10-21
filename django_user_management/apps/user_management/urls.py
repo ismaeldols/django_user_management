@@ -17,5 +17,5 @@ api_urlpatterns = [
 ]
 
 urlpatterns = [
-    path('<str:version>/', include(api_urlpatterns))
+    path('manage/<str:version>/', include(api_urlpatterns))
 ]
