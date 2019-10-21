@@ -15,6 +15,8 @@ django-rest-framework-social-oauth2 = "==1.1.0"
 django-createsuperuserwithpassword = "==2.0.0"
 django-admin-sso = "==2.4.0"
 django-cors-headers = "==3.1.1"
+django-guardian = "==2.1.0"
+djangorestframework-guardian = "==0.3.0"
 
 [requires]
 python_version = "3.7"

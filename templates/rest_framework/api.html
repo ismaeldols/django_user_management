@@ -5,5 +5,7 @@
     <a class="navbar-brand" rel="nofollow" href="#">
         {% trans 'django_user_administration' %}
     </a>
-    <a class="navbar-brand" href="{% url "social:begin" "google-oauth2" %}">GOOGLE AUTH</a>
+
+    <a href="{% url "social:begin" "google-oauth2" %}?next={{ request.path }}">Conectar con Google </a>
+
 {% endblock %}

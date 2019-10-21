@@ -4,10 +4,12 @@ from django.contrib.auth import get_user_model
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    created_by = serializers.ReadOnlyField(source='created_by.username')
+
     class Meta:
         User = get_user_model()
         model = User
-        fields = ['url', 'username', 'email', 'iban', 'groups']
+        fields = ['url', 'username', 'email', 'iban', 'groups', 'created_by']
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):

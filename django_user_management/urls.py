@@ -17,6 +17,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from django.contrib.auth import views
 
 EXCLUDED_APPS = (
 
@@ -25,6 +26,7 @@ EXCLUDED_APPS = (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('rest_framework_social_oauth2.urls')),
+    path('logout/', views.LogoutView.as_view(), name='logout')
     #path('', include('social_django.urls', namespace='social'))
 ]
 

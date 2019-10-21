@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ac7312990a7dd5c4ba7ce64c62996f14c03e77813cc8b5c686a52b723490d020"
+            "sha256": "0d53138eb17c0e3b84ea1ae270f3992e03ac2c584f751aef53ad41361eb8ede0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -76,6 +76,14 @@
             "index": "pypi",
             "version": "==2.0.0"
         },
+        "django-guardian": {
+            "hashes": [
+                "sha256:8cf4efd67a863eb32beafd4335a38ffb083630f8ab2045212d27f8f9c3abe5a6",
+                "sha256:e638c9a23eeac534bb68b133975539ed8782f733ab6f35c0b23b4c39cd06b1bb"
+            ],
+            "index": "pypi",
+            "version": "==2.1.0"
+        },
         "django-iban-field": {
             "hashes": [
                 "sha256:9d11eacb49b939702aa169aa0a3c9880970ed087c236279c32c26f86c7e10092"
@@ -103,6 +111,14 @@
             ],
             "index": "pypi",
             "version": "==3.10.3"
+        },
+        "djangorestframework-guardian": {
+            "hashes": [
+                "sha256:1883756452d9bfcc2a51fb4e039a6837a8f6697c756447aa83af085749b59330",
+                "sha256:3bd3dd6ea58e1bceca5048faf6f8b1a93bb5dcff30ba5eb91b9a0e190a48a0c7"
+            ],
+            "index": "pypi",
+            "version": "==0.3.0"
         },
         "gunicorn": {
             "hashes": [
