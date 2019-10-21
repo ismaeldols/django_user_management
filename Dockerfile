@@ -18,6 +18,9 @@ COPY . /code/
 # Set work directory
 WORKDIR /code/
 
+#Upgrade pip
+RUN pip install --upgrade pip
+
 # Install dependencies
 RUN pip install pipenv
 

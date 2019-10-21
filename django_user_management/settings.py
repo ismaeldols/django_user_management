@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG can be True/False or 1/0
 DEBUG = int(os.environ.get('DEBUG', default=1))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -38,6 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'oauth2_provider',
+    'social_django',
+    'rest_framework_social_oauth2',
+    'django_createsuperuserwithpassword',
+    'admin_sso',
+    'corsheaders',
+    'guardian',
+    'django_user_management.apps.user_management'
 ]
 
 MIDDLEWARE = [
@@ -64,6 +74,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -90,6 +102,61 @@ DATABASES = {
     }
 }
 
+# Authentication And Django Guardian
+
+AUTH_USER_MODEL = "user_management.CustomUser"
+
+AUTHENTICATION_BACKENDS = {
+    'admin_sso.auth.DjangoSSOAuthBackend',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    'guardian.backends.ObjectPermissionBackend',
+}
+
+DEFAULT_AUTHENTICATION_CLASSES = [
+    'rest_framework.authentication.BasicAuthentication'
+]
+
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = '349187247768-72louk2gf4jvqq80utc07gta2ddfvp2q.apps.googleusercontent.com'
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = 'dSkizdwQSwzsX3hvhI1wRxl3'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+DRFSO2_PROPRIETARY_BACKEND_NAME = 'Google'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '349187247768-72louk2gf4jvqq80utc07gta2ddfvp2q.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'dSkizdwQSwzsX3hvhI1wRxl3'
+
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    #'social_core.pipeline.user.create_user',  # Not autocreate users because need IBAN information.
+    'social_core.pipeline.social_auth.associate_by_email',  # 7
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+
+)
+
+SOCIAL_AUTH_DISCONNECT_PIPELINE = (
+    'social_core.pipeline.disconnect.allowed_to_disconnect',
+    'social_core.pipeline.disconnect.get_entries',
+    'social_core.pipeline.disconnect.revoke_tokens',
+    'social_core.pipeline.disconnect.disconnect',
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+'https://www.googleapis.com/auth/userinfo.email',
+'https://www.googleapis.com/auth/userinfo.profile'
+]
+
+LOGIN_URL = '/auth/login/google-oauth2'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -129,6 +196,28 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# REST Framework settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
+    'ALLOWED_VERSIONS': [
+        'v1',
+    ],
+    'DEFAULT_PAGINATION_CLASS':
+        'django_user_management.apps.user_management.pagination.CustomLimitOffsetPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
+    ),
+
+}
+
+# CORS Settings
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Custom test runner for PostgreSQL database
 
